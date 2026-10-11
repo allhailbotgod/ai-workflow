@@ -51,9 +51,9 @@ These are mandatory default constraints for implementation work. Follow them wit
 
 - Read relevant files and applicable project instructions before editing.
 - Treat existing code, architecture, dependencies, and conventions as the primary source of truth.
-- Make only the changes necessary to complete the requested task correctly.--
+- Make only the changes necessary to complete the requested task correctly.
 - Do not modify unrelated files, functions, routes, schemas, tests, configuration, styling, or documentation.
-- Do not perform unsolicited refactoring, cleanup, renaming, formatting, restructuring, or architectural changes, even when you notice opportunities to improve them.--
+- Do not perform unsolicited refactoring, cleanup, renaming, formatting, restructuring, or architectural changes, even when you notice opportunities to improve them.
 - Do not expand the task's scope simply because nearby code could also be improved.
 - If you discover an unrelated bug or improvement, mention it separately when it is important; do not fix it as part of the current task without authorization.
 - Prefer the smallest complete solution that satisfies the requirements without compromising correctness, security, or maintainability.
@@ -65,6 +65,81 @@ These are mandatory default constraints for implementation work. Follow them wit
 - Do not overwrite, discard, or revert existing user changes that are unrelated to the task.
 - If a requirement is materially ambiguous, or a decision could significantly affect architecture, security, data integrity, compatibility, or external behavior, explain the issue and ask before proceeding.
 - Do not ask for permission to perform ordinary, necessary implementation and verification steps that fall within an approved task.
+
+## Token and Execution Efficiency
+
+Minimize unnecessary token consumption, tool calls, context usage, and execution time while preserving correctness, security, maintainability, and adequate verification. Optimize for useful completed work, not minimum token count at any cost.
+
+### Context Management
+
+- Read the applicable instructions and only the files needed to understand and complete the task.
+- Avoid dumping, scanning, or repeatedly reading the entire repository when targeted inspection is sufficient.
+- Inspect file structure and search for relevant symbols before opening large files unnecessarily.
+- Reuse information already established in the current context. Do not reread unchanged files or repeat investigations without a concrete reason.
+- Expand the investigation when initial evidence is insufficient, the implementation has cross-file implications, or correctness and security depend on additional context.
+- Avoid loading large logs, generated files, dependency directories, build outputs, or unrelated documentation unless they are directly relevant.
+- Request or retrieve only the portions of tool output needed to make the next decision. Prefer targeted searches, filtered output, and concise summaries over large dumps.
+- When continuing a multi-step task, retain a concise record of important findings, decisions, completed work, and remaining steps rather than repeating the entire investigation.
+
+### Tool and Command Efficiency
+
+- Prefer one well-targeted command or tool call over several overlapping calls when the same result can be obtained reliably.
+- Batch independent inspections, searches, and checks when practical.
+- Avoid redundant commands, repeated searches with nearly identical queries, and repeated verification of unchanged code.
+- Choose the cheapest reliable tool or check that can answer the current question.
+- Start with focused diagnostics and relevant tests. Escalate to broader tests or investigation when the results, risk, or scope justify it.
+- Do not run expensive, lengthy, or unrelated test suites automatically when a narrower check provides adequate initial evidence.
+- Run broader verification when required by the task, when focused checks reveal a problem, or when the change's risk warrants it.
+- Do not repeatedly execute a failing command without first examining the error and changing the investigation or approach.
+- Avoid unnecessary network requests, package installations, dependency updates, rebuilds, and environment changes.
+- Do not use tools simply to appear thorough. Each call should have a clear purpose and contribute to implementation, diagnosis, or verification.
+
+### Planning and Reasoning Efficiency
+
+- Match planning effort to task complexity and risk. Use minimal planning for trivial changes and more deliberate analysis for complex, unfamiliar, or consequential work.
+- Establish the requested outcome, relevant constraints, and likely implementation path before making changes.
+- Avoid generating lengthy plans for straightforward tasks or repeatedly reconsidering decisions that are already supported by sufficient evidence.
+- Resolve straightforward implementation details using existing project conventions instead of asking unnecessary questions.
+- Ask only when missing information or genuine ambiguity could materially affect the result.
+- Do not explore multiple alternative implementations when one established, suitable approach is already clear.
+- Compare alternatives when the trade-offs could materially affect performance, security, compatibility, maintainability, cost, or architecture.
+- Do not narrate routine internal steps, repeat the task back at length, or provide progress updates that add no useful information.
+- Keep explanations proportional to the task. Explain unfamiliar concepts and important decisions without turning every implementation into a lengthy tutorial.
+- Do not sacrifice necessary analysis, testing, or security review merely to save tokens.
+
+### Implementation Efficiency
+
+- Prefer the smallest complete implementation that satisfies the requirements and fits the existing codebase.
+- Make related changes together when doing so reduces repeated edits and does not increase risk.
+- Avoid speculative abstractions, premature optimization, unnecessary compatibility layers, and features the user did not request.
+- Do not rewrite working code simply to produce a cleaner-looking result.
+- Avoid generating multiple versions of the same implementation unless alternatives are genuinely useful.
+- Reuse existing dependencies and utilities before introducing new ones.
+- Do not create extra files, helper layers, comments, documentation, or configuration without a clear purpose.
+- When a change affects multiple files, inspect the relevant dependencies and update all necessary parts without expanding into unrelated areas.
+- Preserve existing user changes and inspect the final diff to catch accidental or unnecessary edits.
+
+### Output and Context Preservation
+
+- Keep tool outputs, summaries, explanations, and final reports concise but sufficient for the task.
+- Do not reproduce entire files, large code blocks, or lengthy command output when a focused excerpt or summary is enough.
+- When reporting errors, include the relevant failure and its cause if known, rather than dumping unrelated logs.
+- Do not repeat information already communicated unless repetition is needed for clarity or a decision.
+- In long tasks, summarize confirmed findings and unresolved questions concisely so work can continue without rebuilding context.
+- Keep final reports focused on what changed, relevant implementation decisions, actual verification results, and remaining limitations.
+- Never omit a material limitation or failure simply to make the response shorter.
+
+### Efficiency Priorities
+
+When trade-offs arise, use this priority order:
+
+1. Correctness, security, and data integrity.
+2. Fulfilment of the requested task and its explicit constraints.
+3. Adequate verification and preservation of existing behavior.
+4. Maintainability and my ability to understand and maintain the result.
+5. Token, tool-call, and execution efficiency.
+
+Save resources by eliminating redundant work, not by skipping work necessary to produce a reliable result.
 
 ## Implementation and Verification
 
@@ -111,7 +186,6 @@ Do not make me restate this cycle in every prompt. It is the default way to hand
 - Apply these personal rules by default when the task does not specify otherwise.
 - Follow additional project-specific instructions when they are compatible with higher-priority requirements and the requested task.
 - When instructions genuinely conflict or an exception would materially change the result, identify the conflict instead of silently choosing an arbitrary interpretation.
-
 
 ---
 
