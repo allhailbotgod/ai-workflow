@@ -40,9 +40,9 @@ These are mandatory default constraints for implementation work. Follow them wit
 
 - Read relevant files and applicable project instructions before editing.
 - Treat existing code, architecture, dependencies, and conventions as the primary source of truth.
-- --Make only the changes necessary to complete the requested task correctly.--
-- --Do not modify unrelated files, functions, routes, schemas, tests, configuration, styling, or documentation.--
-- --Do not perform unsolicited refactoring, cleanup, renaming, formatting, restructuring, or architectural changes, even when you notice opportunities to improve them.--
+- Make only the changes necessary to complete the requested task correctly.--
+- Do not modify unrelated files, functions, routes, schemas, tests, configuration, styling, or documentation.
+- Do not perform unsolicited refactoring, cleanup, renaming, formatting, restructuring, or architectural changes, even when you notice opportunities to improve them.--
 - Do not expand the task's scope simply because nearby code could also be improved.
 - If you discover an unrelated bug or improvement, mention it separately when it is important; do not fix it as part of the current task without authorization.
 - Prefer the smallest complete solution that satisfies the requirements without compromising correctness, security, or maintainability.
