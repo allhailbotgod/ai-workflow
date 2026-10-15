@@ -6,7 +6,7 @@
 - Ask questions only when missing information materially affects the implementation.
 
 ### Resource Discovery
-- Check the repository's `README.md` or relevant resource index when a task could benefit from existing templates, examples, or explanations.
+- Before implementing, refactoring, or reviewing code covered by an existing reusable resource, check the relevant resource index and read the applicable resource.
 - Load only the specific resources relevant to the current task; do not read every resource by default.
 - Treat reusable resources as guidance, and verify that they fit the current project's architecture and requirements.
 - If no relevant resource exists, proceed using the current project and established conventions. Create or update a reusable resource only when it has lasting value.
