@@ -16,8 +16,13 @@ Reusable implementation templates for Python backend development, primarily usin
 
 ## Usage Rules
 
-- Consult the relevant template when implementing, refactoring, or reviewing related code.
-- Treat templates as starting points, not unquestionable rules. Check them against the current project architecture and requirements.
-- Prefer established project patterns when they conflict with a generic template, unless those patterns are unsafe or incorrect.
-- Do not load unrelated templates.
+- Consult the relevant template before implementing, refactoring, or reviewing related code.
+- Read only the templates relevant to the current task. Do not load unrelated templates.
+- Follow each template's stated requirements. When a template specifies an exact implementation, preserve it unless an explicit instruction requires a change or a technical issue must be addressed.
+- Treat templates intended as starting structures as adaptable to the project's actual requirements.
+- Check templates against the current project architecture and requirements before applying them.
+- Prefer established project patterns when they conflict with a generic template, unless those patterns are unsafe or incorrect. Explain meaningful conflicts rather than silently overriding either convention.
+- Do not invent project requirements, configuration values, or implementation details that are not supported by the codebase or task.
 - Update templates when a reusable pattern changes or a better approach is established.
+
+**Core rule:** Use the relevant template to maintain consistency, respect its intended level of flexibility, and preserve existing project conventions without introducing unrelated changes.
