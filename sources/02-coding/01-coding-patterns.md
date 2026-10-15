@@ -20,7 +20,7 @@ The following patterns have been established in my existing backend work:
 - Use Pydantic v2 configuration such as `ConfigDict(from_attributes=True)` when schemas need ORM attribute conversion.
 - Use Alembic for database migrations.
 - Reuse the project's existing error-handling conventions, including `@handle_unexpected_errors` where already established.
-- Reuse the project's database dependency and transaction conventions. In existing projects, `get_db()` handles rollback, and `with db.begin()` is used where transaction auto-commit is appropriate.
+- Reuse the project's database dependency and transaction conventions. A `get_db()` dependency may handle rollback when exceptions propagate through it; use `with db.begin()` when its transaction semantics fit the operation and existing project conventions.
 - Use relationship-loading strategies such as `selectinload` or `joinedload` when appropriate to the query and existing model relationships.
 - Keep modules separated according to the repository's established structure instead of introducing a new architecture for an isolated task.
 
