@@ -10,22 +10,23 @@ OUTPUT_FILE="$ROOT_DIR/AGENTS.md"
 CODEX_DIR="$HOME/.codex"
 GLOBAL_FILE="$CODEX_DIR/AGENTS.md"
 
-# Find and sort all Markdown instruction files.
-if [[ ! -d "$SOURCE_DIR" ]]; then
-    printf 'Error: instruction directory not found: %s\n' "$SOURCE_DIR" >&2
-    exit 1
-fi
-
-mapfile -d '' -t SOURCE_FILES < <(
-    find "$SOURCE_DIR" -type f -name '*.md' -print0 |
-        sort -z
+# List the Markdown files that should be loaded as global instructions.
+# Reference templates, examples, and explanations are intentionally excluded.
+SOURCE_FILES=(
+    "$SOURCE_DIR/01-core/01-personal-rules.md"
+    "$SOURCE_DIR/01-core/02-task-workflow.md"
+    "$SOURCE_DIR/02-coding/01-coding-patterns.md"
 )
 
-if (( ${#SOURCE_FILES[@]} == 0 )); then
-    printf 'Error: no Markdown instruction files found in %s\n' \
-        "$SOURCE_DIR" >&2
-    exit 1
-fi
+# Fail early if a required instruction file is missing.
+for file in "${SOURCE_FILES[@]}"; do
+    if [[ ! -f "$file" ]]; then
+        printf 'Error: required instruction file not found: %s\n' \
+            "$file" >&2
+        exit 1
+    fi
+done
+
 
 # Build the combined instructions in a temporary file first.
 TEMP_FILE="$(mktemp "$ROOT_DIR/.AGENTS.md.XXXXXX")"
